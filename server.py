@@ -10,6 +10,7 @@ from tornado.options import define, options
 from tornado.web import RequestHandler
 from urls import handlers  # url抽离
 import config  # 导入配置文件
+
 # urllib.quote('http://www.idehai.com/wechat8023/profile')
 define('port', type=int, default=8888, help='run port')
 
@@ -29,8 +30,8 @@ class MyApplication(tornado.web.Application):
 
 def main():
     """tail -f log # 动态显示"""
-    options.logging = config.log_leve # 日志级别
-    options.log_file_prefix = config.log_file  # 注意下划线
+    options.logging = config.log_leve  # 日志级别
+    options.log_file_prefix = config.log_file  # 注意下划线,存储到日志文件
     tornado.options.parse_command_line()
     app = MyApplication(  # 调用自己的Application
         handlers, **config.settings

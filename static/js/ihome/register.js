@@ -5,6 +5,7 @@ function getCookie(name) {
 
 var imageCodeId = "";
 
+// js 生成UUID的方法
 function generateUUID() {
     var d = new Date().getTime();
     if(window.performance && typeof window.performance.now === "function"){
@@ -21,7 +22,7 @@ function generateUUID() {
 function generateImageCode() {
     var picId = generateUUID();
     $(".image-code img").attr("src", "/api/piccode?pre="+imageCodeId+"&cur="+picId);
-    imageCodeId = picId;
+    imageCodeId = picId;//存一下这一次的imageCodeId
 }
 
 function sendSMSCode() {

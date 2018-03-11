@@ -2,15 +2,15 @@
 import os
 
 # redis 配置抽离
-redis_settings = dict(
-    host='127.0.0.1',
-    port=6379,
-)
 torndb_settings = dict(
     host="127.0.0.1",
     database="test1",
     user="root",
     password="123",  # 看源码得知默认3306端口
+)
+redis_settings = dict(
+    host='127.0.0.1',
+    port=6379,
 )
 
 settings = {

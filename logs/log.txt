@@ -19,3 +19,89 @@
 [D 180311 04:22:37 Passport:10] debug
 [I 180311 04:22:37 Passport:11] info
 [I 180311 04:22:37 web:2064] 304 GET / (127.0.0.1) 1.68ms
+[W 180311 23:19:05 web:1588] 400 GET /api/imagecode (127.0.0.1): Missing argument codeid
+[W 180311 23:19:05 web:2064] 400 GET /api/imagecode (127.0.0.1) 2.72ms
+[W 180311 23:19:47 web:1588] 400 GET /api/imagecode (127.0.0.1): Missing argument codeid
+[W 180311 23:19:47 web:2064] 400 GET /api/imagecode (127.0.0.1) 1.17ms
+[W 180311 23:20:50 web:1588] 400 GET /api/imagecode?codeid=123 (127.0.0.1): Missing argument pcodeid
+[W 180311 23:20:50 web:2064] 400 GET /api/imagecode?codeid=123 (127.0.0.1) 1.19ms
+[W 180311 23:21:02 web:1588] 400 GET /api/imagecode?codeid=123&pcode= (127.0.0.1): Missing argument pcodeid
+[W 180311 23:21:02 web:2064] 400 GET /api/imagecode?codeid=123&pcode= (127.0.0.1) 1.18ms
+[E 180311 23:21:36 web:1591] Uncaught exception GET /api/imagecode?codeid=123&pcodeid= (127.0.0.1)
+    HTTPServerRequest(protocol='http', host='127.0.0.1:8888', method='GET', uri='/api/imagecode?codeid=123&pcodeid=', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Accept-Language': 'zh-CN,zh;q=0.8', 'Accept-Encoding': 'gzip, deflate, sdch', 'Host': '127.0.0.1:8888', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36', 'Connection': 'keep-alive', 'Cookie': 'csrftoken=j0r22PNhrdcaVGyLcAL0QPTtL5Uh39Ir', 'Upgrade-Insecure-Requests': '1'})
+    Traceback (most recent call last):
+      File "/home/python/.virtualenvs/td/local/lib/python2.7/site-packages/tornado/web.py", line 1510, in _execute
+        result = method(*self.path_args, **self.path_kwargs)
+      File "/home/python/Desktop/Tornado_home_Git/handlers/Verify.py", line 18, in get
+        name, text, image = captcha.generate_captcha()  # 自己起的名字,文本,生成图片的二进制
+    AttributeError: 'module' object has no attribute 'generate_captcha'
+[E 180311 23:21:36 web:2064] 500 GET /api/imagecode?codeid=123&pcodeid= (127.0.0.1) 47.82ms
+[I 180311 23:24:49 autoreload:198] /home/python/Desktop/Tornado_home_Git/handlers/Verify.py modified; restarting server
+[E 180311 23:24:57 web:1591] Uncaught exception GET /api/imagecode?codeid=123&pcodeid= (127.0.0.1)
+    HTTPServerRequest(protocol='http', host='127.0.0.1:8888', method='GET', uri='/api/imagecode?codeid=123&pcodeid=', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Accept-Language': 'zh-CN,zh;q=0.8', 'Accept-Encoding': 'gzip, deflate, sdch', 'Host': '127.0.0.1:8888', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36', 'Connection': 'keep-alive', 'Cookie': 'csrftoken=j0r22PNhrdcaVGyLcAL0QPTtL5Uh39Ir', 'Cache-Control': 'max-age=0', 'Upgrade-Insecure-Requests': '1'})
+    Traceback (most recent call last):
+      File "/home/python/.virtualenvs/td/local/lib/python2.7/site-packages/tornado/web.py", line 1510, in _execute
+        result = method(*self.path_args, **self.path_kwargs)
+      File "/home/python/Desktop/Tornado_home_Git/handlers/Verify.py", line 13, in get
+        name, text, image = captcha.generate_captcha()  # 自己起的名字,文本,生成图片的二进制
+    AttributeError: 'module' object has no attribute 'generate_captcha'
+[E 180311 23:24:57 web:2064] 500 GET /api/imagecode?codeid=123&pcodeid= (127.0.0.1) 8.70ms
+[E 180311 23:25:19 web:1591] Uncaught exception GET /api/imagecode?codeid=123&pcodeid=123123 (127.0.0.1)
+    HTTPServerRequest(protocol='http', host='127.0.0.1:8888', method='GET', uri='/api/imagecode?codeid=123&pcodeid=123123', version='HTTP/1.1', remote_ip='127.0.0.1', headers={'Accept-Language': 'zh-CN,zh;q=0.8', 'Accept-Encoding': 'gzip, deflate, sdch', 'Host': '127.0.0.1:8888', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8', 'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36', 'Connection': 'keep-alive', 'Cookie': 'csrftoken=j0r22PNhrdcaVGyLcAL0QPTtL5Uh39Ir', 'Upgrade-Insecure-Requests': '1'})
+    Traceback (most recent call last):
+      File "/home/python/.virtualenvs/td/local/lib/python2.7/site-packages/tornado/web.py", line 1510, in _execute
+        result = method(*self.path_args, **self.path_kwargs)
+      File "/home/python/Desktop/Tornado_home_Git/handlers/Verify.py", line 13, in get
+        name, text, image = captcha.generate_captcha()  # 自己起的名字,文本,生成图片的二进制
+    AttributeError: 'module' object has no attribute 'generate_captcha'
+[E 180311 23:25:19 web:2064] 500 GET /api/imagecode?codeid=123&pcodeid=123123 (127.0.0.1) 1.63ms
+[I 180311 23:26:29 autoreload:198] server.py modified; restarting server
+[I 180311 23:27:53 autoreload:198] /home/python/Desktop/Tornado_home_Git/handlers/Verify.py modified; restarting server
+[I 180311 23:27:56 web:2064] 200 GET /api/imagecode?codeid=123&pcodeid=123123 (127.0.0.1) 248.66ms
+[I 180311 23:28:01 web:2064] 200 GET /api/imagecode?codeid=1223&pcodeid=123123 (127.0.0.1) 16.86ms
+[I 180311 23:35:45 autoreload:198] /home/python/Desktop/Tornado_home_Git/urls.py modified; restarting server
+[I 180311 23:36:03 autoreload:198] /home/python/Desktop/Tornado_home_Git/urls.py modified; restarting server
+[I 180312 01:20:33 autoreload:198] /home/python/Desktop/Tornado_home_Git/config.py modified; restarting server
+[I 180312 01:29:52 autoreload:198] /home/python/Desktop/Tornado_home_Git/handlers/Verify.py modified; restarting server
+[I 180312 01:30:02 web:2064] 200 GET /api/piccode?cur=1223&pre=123123 (127.0.0.1) 58.56ms
+[I 180312 01:30:58 web:2064] 200 GET /register.html (127.0.0.1) 139.75ms
+[I 180312 01:30:59 web:2064] 200 GET /static/plugins/bootstrap/css/bootstrap.min.css (127.0.0.1) 47.67ms
+[I 180312 01:30:59 web:2064] 200 GET /static/images/logo@128x59.png (127.0.0.1) 71.52ms
+[I 180312 01:30:59 web:2064] 200 GET /static/plugins/font-awesome/css/font-awesome.min.css (127.0.0.1) 23.97ms
+[I 180312 01:30:59 web:2064] 200 GET /static/css/reset.css (127.0.0.1) 18.14ms
+[I 180312 01:30:59 web:2064] 200 GET /static/css/ihome/main.css (127.0.0.1) 2.09ms
+[I 180312 01:30:59 web:2064] 200 GET /static/css/ihome/register.css (127.0.0.1) 2.24ms
+[I 180312 01:30:59 web:2064] 200 GET /static/js/jquery.min.js (127.0.0.1) 40.88ms
+[I 180312 01:30:59 web:2064] 200 GET /static/plugins/bootstrap/js/bootstrap.min.js (127.0.0.1) 80.93ms
+[I 180312 01:30:59 web:2064] 200 GET /static/js/ihome/register.js (127.0.0.1) 1.37ms
+[I 180312 01:31:00 web:2064] 200 GET /static/plugins/bootstrap/css/bootstrap.min.css.map (127.0.0.1) 105.87ms
+[I 180312 01:31:00 web:2064] 200 GET /static/plugins/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3 (127.0.0.1) 39.20ms
+[I 180312 01:31:02 web:2064] 200 GET /api/piccode?pre=&cur=9110c813-1f5b-4fbb-a43f-b0c7f57b4069 (127.0.0.1) 15.15ms
+[I 180312 01:31:03 web:2064] 200 GET /api/piccode?pre=9110c813-1f5b-4fbb-a43f-b0c7f57b4069&cur=7eddc619-f3bf-4ef2-a8e5-3ee8b206a157 (127.0.0.1) 11.43ms
+[I 180312 01:31:04 web:2064] 200 GET /api/piccode?pre=7eddc619-f3bf-4ef2-a8e5-3ee8b206a157&cur=8dd79ccf-0619-4c10-b1cb-f92c81c397da (127.0.0.1) 18.25ms
+[I 180312 01:31:05 web:2064] 200 GET /api/piccode?pre=8dd79ccf-0619-4c10-b1cb-f92c81c397da&cur=4befc227-a2c7-49ba-b1fe-60e488ae3f3b (127.0.0.1) 16.06ms
+[I 180312 01:31:05 web:2064] 200 GET /api/piccode?pre=4befc227-a2c7-49ba-b1fe-60e488ae3f3b&cur=d6719e2f-88b3-4506-9e5c-265a3be3aa56 (127.0.0.1) 34.16ms
+[I 180312 01:31:11 web:2064] 200 GET /api/piccode?pre=d6719e2f-88b3-4506-9e5c-265a3be3aa56&cur=3d915a4f-1020-4365-bee1-30c4fc6e9260 (127.0.0.1) 12.64ms
+[I 180312 01:31:12 web:2064] 200 GET /api/piccode?pre=3d915a4f-1020-4365-bee1-30c4fc6e9260&cur=e32bdc84-acab-4ec2-a03f-73961abbfb7b (127.0.0.1) 12.43ms
+[I 180312 01:31:55 web:2064] 200 GET / (127.0.0.1) 1.34ms
+[I 180312 01:31:55 web:2064] 200 GET /static/plugins/swiper/css/swiper.min.css (127.0.0.1) 16.96ms
+[I 180312 01:31:56 web:2064] 200 GET /static/css/ihome/index.css (127.0.0.1) 14.75ms
+[I 180312 01:31:56 web:2064] 200 GET /static/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css (127.0.0.1) 12.66ms
+[I 180312 01:31:56 web:2064] 200 GET /static/plugins/swiper/js/swiper.jquery.min.js (127.0.0.1) 22.60ms
+[I 180312 01:31:56 web:2064] 200 GET /static/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js (127.0.0.1) 3.65ms
+[I 180312 01:31:56 web:2064] 200 GET /static/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js (127.0.0.1) 39.71ms
+[I 180312 01:31:56 web:2064] 200 GET /static/js/template.js (127.0.0.1) 20.83ms
+[I 180312 01:31:56 web:2064] 200 GET /static/js/ihome/index.js (127.0.0.1) 2.94ms
+[W 180312 01:31:57 web:2064] 404 GET /api/check_login (127.0.0.1) 58.22ms
+[W 180312 01:31:57 web:2064] 404 GET /api/house/index (127.0.0.1) 1.63ms
+[W 180312 01:31:57 web:2064] 404 GET /static/plugins/swiper/js/maps/swiper.jquery.min.js.map (127.0.0.1) 3.20ms
+[I 180312 01:32:03 web:2064] 304 GET /static/js/ihome/register.js (127.0.0.1) 1.35ms
+[I 180312 01:32:03 web:2064] 200 GET /api/piccode?pre=&cur=59bd272d-0d34-4149-b09f-42f4513d1ab7 (127.0.0.1) 73.27ms
+[I 180312 01:32:34 web:2064] 200 GET /api/piccode?pre=59bd272d-0d34-4149-b09f-42f4513d1ab7&cur=0f440f27-1762-46dc-8438-b4f64a96c0f2 (127.0.0.1) 13.82ms
+[I 180312 01:32:35 web:2064] 200 GET /api/piccode?pre=0f440f27-1762-46dc-8438-b4f64a96c0f2&cur=b85c3520-b068-4999-a173-75e1d956ff70 (127.0.0.1) 16.36ms
+[I 180312 01:35:59 web:2064] 200 GET /api/piccode?pre=b85c3520-b068-4999-a173-75e1d956ff70&cur=bf8fb4a7-5795-4e7a-9a2f-7365cf8e95a4 (127.0.0.1) 20.19ms
+[I 180312 01:36:00 web:2064] 200 GET /api/piccode?pre=bf8fb4a7-5795-4e7a-9a2f-7365cf8e95a4&cur=251b8adf-6948-450a-b61e-044eb336dc96 (127.0.0.1) 11.01ms
+[I 180312 01:36:01 web:2064] 200 GET /api/piccode?pre=251b8adf-6948-450a-b61e-044eb336dc96&cur=af8c1337-34c0-4cb8-bef9-a05a1e2db2d8 (127.0.0.1) 15.45ms
+[I 180312 01:37:28 autoreload:198] /home/python/Desktop/Tornado_home_Git/handlers/Verify.py modified; restarting server
+[I 180312 01:38:05 web:2064] 200 GET /api/piccode?pre=af8c1337-34c0-4cb8-bef9-a05a1e2db2d8&cur=bc031100-a47b-4c0f-bf76-4c0fe1bbed6c (127.0.0.1) 70.70ms
+[I 180312 01:38:24 web:2064] 200 GET /api/piccode?pre=bc031100-a47b-4c0f-bf76-4c0fe1bbed6c&cur=097fc7d5-6691-4c7b-9346-526f97794de1 (127.0.0.1) 36.71ms
