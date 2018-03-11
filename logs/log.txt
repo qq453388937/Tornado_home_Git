@@ -105,3 +105,4 @@
 [I 180312 01:37:28 autoreload:198] /home/python/Desktop/Tornado_home_Git/handlers/Verify.py modified; restarting server
 [I 180312 01:38:05 web:2064] 200 GET /api/piccode?pre=af8c1337-34c0-4cb8-bef9-a05a1e2db2d8&cur=bc031100-a47b-4c0f-bf76-4c0fe1bbed6c (127.0.0.1) 70.70ms
 [I 180312 01:38:24 web:2064] 200 GET /api/piccode?pre=bc031100-a47b-4c0f-bf76-4c0fe1bbed6c&cur=097fc7d5-6691-4c7b-9346-526f97794de1 (127.0.0.1) 36.71ms
+[I 180312 02:14:29 autoreload:198] /home/python/Desktop/Tornado_home_Git/handlers/Verify.py modified; restarting server

@@ -10,6 +10,7 @@ current_path = os.path.dirname(__file__)
 handlers = [
     (r'/test', Passport.IndexHandler),
     (r'/api/piccode', Verify.ImageCodeHandler),
+    (r'/api/smscode',Verify.SMSCodeHandler),
     (r'^/(.*)$', StaticFileHandler, {
         'path': os.path.join(current_path, 'html'),
         'default_filename': 'index.html'

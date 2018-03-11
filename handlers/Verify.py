@@ -22,3 +22,8 @@ class ImageCodeHandler(BaseHandler):
         else:
             self.set_header('Content-Type', 'image/jpg')
             self.write(image)  # 可以接受二进制
+
+
+class SMSCodeHandler(BaseHandler):
+    def post(self):
+        pass
