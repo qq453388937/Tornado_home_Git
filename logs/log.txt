@@ -1,0 +1,21 @@
+[W 180311 04:17:50 Passport:9] 哈哈
+[I 180311 04:17:50 Passport:11] info
+[I 180311 04:17:50 web:2064] 304 GET / (127.0.0.1) 14.14ms
+[I 180311 04:20:25 autoreload:198] /home/python/Desktop/Tornado_home/config.py modified; restarting server
+[W 180311 04:20:25 Passport:9] 哈哈
+[D 180311 04:20:25 Passport:10] debug
+[I 180311 04:20:25 Passport:11] info
+[I 180311 04:20:25 web:2064] 304 GET / (127.0.0.1) 11.05ms
+[I 180311 04:21:53 autoreload:198] server.py modified; restarting server
+[W 180311 04:22:23 Passport:9] 哈哈
+[D 180311 04:22:23 Passport:10] debug
+[I 180311 04:22:23 Passport:11] info
+[I 180311 04:22:23 web:2064] 304 GET / (127.0.0.1) 5.98ms
+[W 180311 04:22:32 Passport:9] 哈哈
+[D 180311 04:22:32 Passport:10] debug
+[I 180311 04:22:32 Passport:11] info
+[I 180311 04:22:32 web:2064] 304 GET / (127.0.0.1) 1.71ms
+[W 180311 04:22:37 Passport:9] 哈哈
+[D 180311 04:22:37 Passport:10] debug
+[I 180311 04:22:37 Passport:11] info
+[I 180311 04:22:37 web:2064] 304 GET / (127.0.0.1) 1.68ms
