@@ -8,6 +8,7 @@ from utils.captcha.captcha import captcha
 
 
 class ImageCodeHandler(BaseHandler):
+
     def get(self):
         code_id = self.get_argument('cur')
         pre_code_id = self.get_argument('pre')
