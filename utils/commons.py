@@ -6,6 +6,7 @@ from utils.session import Session
 from utils.response_code import RET
 
 
+
 def required_login(fun):
     # 保证被装饰的函数对象的__name__不变
     @functools.wraps(fun)

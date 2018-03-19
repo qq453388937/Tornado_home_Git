@@ -37,7 +37,8 @@ $(document).ready(function() {
                 "X-XSRFTOKEN":getCookie("_xsrf"),
             },
             success: function (data) {
-                if ("0" == data.errcode) {
+                if ("0" == data.errno) {
+                    alert("登陆成功!")
                     location.href = "/";
                     return;
                 }

@@ -8,20 +8,20 @@ var imageCodeId = "";
 // js 生成UUID的方法
 function generateUUID() {
     var d = new Date().getTime();
-    if(window.performance && typeof window.performance.now === "function"){
+    if (window.performance && typeof window.performance.now === "function") {
         d += performance.now(); //use high-precision timer if available
     }
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = (d + Math.random()*16)%16 | 0;
-        d = Math.floor(d/16);
-        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
     return uuid;
 }
 
 function generateImageCode() {
     var picId = generateUUID();
-    $(".image-code img").attr("src", "/api/piccode?pre="+imageCodeId+"&cur="+picId);
+    $(".image-code img").attr("src", "/api/piccode?pre=" + imageCodeId + "&cur=" + picId);
     imageCodeId = picId;//存一下这一次的imageCodeId
 }
 
@@ -33,7 +33,7 @@ function sendSMSCode() {
         $("#mobile-err").show();
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
         return;
-    } 
+    }
     var imageCode = $("#imagecode").val();
     if (!imageCode) {
         $("#image-code-err span").html("请填写验证码！");
@@ -41,6 +41,7 @@ function sendSMSCode() {
         $(".phonecode-a").attr("onclick", "sendSMSCode();");
         return;
     }
+    // 传输的不是json格式
     // $.get("/api/smscode", {mobile:mobile, code:imageCode, codeId:imageCodeId},
     //     function(data){
     //         if (0 != data.errno) {
@@ -65,26 +66,28 @@ function sendSMSCode() {
     //             }, 1000, 60);
     //         }
     // }, 'json');
-    var data = {mobile:mobile, piccode:imageCode, piccode_id:imageCodeId};
+    debugger;
+    var req_data = {mobile: mobile, piccode: imageCode, piccode_id: imageCodeId};
     $.ajax({
         url: "/api/smscode",
         method: "POST",
         headers: {
-            "X-XSRFTOKEN": getCookie("_xsrf"),
+            "X-XSRFTOKEN": getCookie("_xsrf"), //csrftoken校验
         },
-        data: JSON.stringify(data),
-        contentType: "application/json",
+        data: JSON.stringify(req_data),
+        contentType: "application/json", // json格式
         dataType: "json",
         success: function (data) {
             // data = {
             //     errcode
             //     errmsg
             // }
-            if ("0" == data.errcode) {
+            debugger
+            if ("0" == data.errno) {
                 var duration = 60;
                 var timeObj = setInterval(function () {
                     duration = duration - 1;
-                    $(".phonecode-a").html(duration+"秒");
+                    $(".phonecode-a").html(duration + "秒");
                     if (1 == duration) {
                         clearInterval(timeObj)
                         $(".phonecode-a").html("获取验证码");
@@ -95,7 +98,7 @@ function sendSMSCode() {
                 $("#image-code-err span").html(data.errmsg);
                 $("#image-code-err").show();
                 $(".phonecode-a").attr("onclick", "sendSMSCode();")
-                if (data.errcode == "4002" || data.errcode == "4004") {
+                if (data.errno == "4002" || data.errno == "4004" || data.errno == "4001") {
                     generateImageCode();
                 }
             }
@@ -104,27 +107,27 @@ function sendSMSCode() {
 
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     generateImageCode();
-    $("#mobile").focus(function(){
+    $("#mobile").focus(function () {
         $("#mobile-err").hide();
     });
-    $("#imagecode").focus(function(){
+    $("#imagecode").focus(function () {
         $("#image-code-err").hide();
     });
-    $("#phonecode").focus(function(){
+    $("#phonecode").focus(function () {
         $("#phone-code-err").hide();
     });
-    $("#password").focus(function(){
+    $("#password").focus(function () {
         $("#password-err").hide();
         $("#password2-err").hide();
     });
-    $("#password2").focus(function(){
+    $("#password2").focus(function () {
         $("#password2-err").hide();
     });
 
     // 当用户点击表单提交按钮时执行自己定义的函数
-    $(".form-register").submit(function(e){
+    $(".form-register").submit(function (e) {
         // 组织浏览器对于表单的默认行为
         e.preventDefault();
 
@@ -157,7 +160,9 @@ $(document).ready(function() {
         // 声明一个要保存结果的变量
         var data = {}
         // 把表单中的数据填充到data中
-        $(".form-register").serializeArray().map(function(x){data[x.name]=x.value})
+        $(".form-register").serializeArray().map(function (x) {
+            data[x.name] = x.value
+        })
         // 把data变量转为josn格式字符串
         var json_data = JSON.stringify(data)
         //向后端发送请求
@@ -172,6 +177,7 @@ $(document).ready(function() {
             },
             success: function (data) {
                 if ("0" == data.errcode) {
+                    alert("注册成功!")
                     location.href = "/";
                 } else if ("验证码过期" == data.errmsg || "验证码错误" == data.errmsg) {
                     $("#phone-code-err>span").html(data.errmsg);
@@ -213,33 +219,6 @@ $(document).ready(function() {
 //         x.value
 //         dict[x.name] = x.value
 //     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 })

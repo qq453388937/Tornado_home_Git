@@ -1,35 +1,34 @@
-# coding=gbk
+#coding=gbk
 
-# coding=utf-8
+#coding=utf-8
 
-# -*- coding: UTF-8 -*-
+#-*- coding: UTF-8 -*-
 
 from CCPRestSDK import REST
 import ConfigParser
 import logging
 
-# 主帐号
-accountSid = '8aaf0708620460990162162aab0a044d';
+#主帐号
+accountSid= '8aaf0708620460990162162aab0a044d';
 
-# 主帐号Token
-accountToken = '697eb299a32d48eb9cfd29c2af3b3ade';
+#主帐号Token
+accountToken= '697eb299a32d48eb9cfd29c2af3b3ade';
 
-# 应用Id
-appId = '8aaf0708620460990162162aab760454';
+#应用Id
+appId='8aaf0708620460990162162aab760454';
 
-# 请求地址，格式如下，不需要写http://
-serverIP = 'app.cloopen.com';
+#请求地址，格式如下，不需要写http://
+serverIP='app.cloopen.com';
 
-# 请求端口
-serverPort = '8883';
+#请求端口
+serverPort='8883';
 
-# REST版本号
-softVersion = '2013-12-26';
+#REST版本号
+softVersion='2013-12-26';
 
-
-# 发送模板短信
-# @param to 手机号码
-# @param datas 内容数据 格式为数组 例如：{'12','34'}，如不需替换请填 ''
+  # 发送模板短信
+  # @param to 手机号码
+  # @param datas 内容数据 格式为数组 例如：{'12','34'}，如不需替换请填 ''
 # @param $tempId 模板Id
 
 # def sendTemplateSMS(to,datas,tempId):
@@ -59,15 +58,7 @@ class CCP(object):
 
     @staticmethod
     def instance():
-        """单例模式"""
         if not hasattr(CCP, "_instance"):
-            CCP._instance = CCP()
-        return CCP._instance
-
-    @classmethod
-    def get_instance(cls):
-        """单例模式"""
-        if not hasattr(cls, '_instance'):
             CCP._instance = CCP()
         return CCP._instance
 
@@ -90,11 +81,13 @@ class CCP(object):
         else:
             return False
 
-
 ccp = CCP.instance()
 
 if __name__ == "__main__":
     ccp = CCP.instance()
-    ccp.sendTemplateSMS("15301372310", ["1234", 5], 1)
+    ccp.sendTemplateSMS("18516952650", ["1234", 5], 1)
 
-# sendTemplateSMS(手机号码,内容数据,模板Id)
+
+
+
+#sendTemplateSMS(手机号码,内容数据,模板Id)
