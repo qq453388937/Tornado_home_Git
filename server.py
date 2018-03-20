@@ -45,3 +45,10 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+"""
+mysqldump -uroot -p123 ihome > xxx.sql
+arttemplate.js
+https://github.com/aui/artTemplate.js
+
+"""

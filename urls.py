@@ -18,6 +18,7 @@ handlers = [
     (r'/api/login', Passport.LoginHandler),
     (r'/api/check_login', Passport.CheckLoginHandler),
     (r'/api/logout', Passport.CheckLoginHandler),
+    (r'/api/profile/avatar', Passport.AvatarHandler),
     (r'^/(.*)$', MyStaticFileHandler, {
         'path': os.path.join(current_path, 'html'),
         'default_filename': 'index.html'
