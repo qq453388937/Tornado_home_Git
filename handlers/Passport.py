@@ -113,3 +113,18 @@ class Logout(BaseHandler):
         session = Session(self)
         session.delete()
         self.write(dict(errcode=RET.OK, errmsg="退出成功"))
+
+
+class AvatarHandler(BaseHandler):
+    def post(self):
+        from utils.qiniu_storage import storage
+        try:
+            image_data = self.request.files["avatar"][0]["body"]
+        except Exception as e:
+            logging.error(e)
+            return self.write("出错了")
+        try:
+            key = storage(image_data)
+        except Exception as e:
+            return self.write("")
+        self.db.execute

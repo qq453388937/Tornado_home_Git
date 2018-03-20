@@ -24,7 +24,7 @@ class BaseHandler(RequestHandler):
         pass
 
     def prepare(self):
-        # self.xsrf_token  # html带上xsrf_token
+        self.xsrf_token  # html带上xsrf_token
         print(self.request.body.decode())
         if self.request.headers.get('Content-Type'):
             if self.request.headers.get('Content-Type').startswith('application/json'):
