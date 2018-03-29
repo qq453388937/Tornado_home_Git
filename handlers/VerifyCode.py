@@ -33,6 +33,8 @@ class PicCodeHandler(BaseHandler):
             self.set_header("Content-Type", "image/jpg")
             self.write(pic)
 
+    # def post(self):
+
 
 class SMSCodeHandler(BaseHandler):
     """短信验证码"""

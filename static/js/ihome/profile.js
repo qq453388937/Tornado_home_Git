@@ -24,7 +24,7 @@ $(document).ready(function () {
         }
     })
     $("#form-avatar").submit(function (e) {
-        // 组织浏览器对于表单的默认行为
+        // 阻止浏览器对于表单的默认行为
 
         e.preventDefault();
         $('.image_uploading').fadeIn('fast');
@@ -50,6 +50,9 @@ $(document).ready(function () {
         e.preventDefault();
         var data = {};
         $(this).serializeArray().map(function(x){data[x.name] = x.value;});
+        // $('#form-name').serializeArray().map(function (x) {
+        //     data[x.name]=x.value;
+        // })
         var jsonData = JSON.stringify(data);
         $.ajax({
             url:"/api/profile/name",

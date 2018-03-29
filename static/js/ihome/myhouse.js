@@ -12,4 +12,7 @@ $(document).ready(function(){
             });
         }
     });
+     $.get("/api/house/my", function(result){
+                $("#houses-list").html(template("houses-list-tmpl", {houses:result.houses}));
+            });
 })

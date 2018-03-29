@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import os
-from handlers import Passport, Verify, VerifyCode
+from handlers import Passport, Verify, VerifyCode, House
 from tornado.web import RequestHandler
 # , StaticFileHandler
 # 静态文件用到StaticFileHandle,这里使用继承加入了xsrf校验
@@ -19,6 +19,9 @@ handlers = [
     (r'/api/check_login', Passport.CheckLoginHandler),
     (r'/api/logout', Passport.CheckLoginHandler),
     (r'/api/profile/avatar', Passport.AvatarHandler),
+    (r'/api/house/area', House.AreaInfoHandler),
+    (r'/api/house/my', House.MyHousehandler),
+    (r'/api/house/info', House.HouseInfoHandler),
     (r'^/(.*)$', MyStaticFileHandler, {
         'path': os.path.join(current_path, 'html'),
         'default_filename': 'index.html'

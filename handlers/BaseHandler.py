@@ -25,10 +25,10 @@ class BaseHandler(RequestHandler):
 
     def prepare(self):
         self.xsrf_token  # html带上xsrf_token
-        print(self.request.body.decode())
+        # print(self.request.body.decode())
         if self.request.headers.get('Content-Type'):
             if self.request.headers.get('Content-Type').startswith('application/json'):
-                self.json_args = json.loads(self.request.body.decode())
+                self.json_args = json.loads(self.request.body)
             else:
                 self.json_args = None
 
@@ -39,6 +39,9 @@ class BaseHandler(RequestHandler):
         pass
 
     def get_current_user(self):
+        """方便全局调用
+        调用一次就给BaseHandler的对象的属性session赋值了Session(self)
+        """
         self.session = Session(self)
         return self.session.data
 

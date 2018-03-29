@@ -30,8 +30,9 @@ $(document).ready(function(){
         // 通过jquery筛选出勾选了的页面元素
         // 通过each方法遍历元素
         $("input:checkbox:checked[name=facility]").each(function(i){facility[i] = this.value;});
-        data.facility = facility;
-        var jsonData = JSON.stringify(data);
+        data.facility = facility;//数组放到对象的属性里面
+        var jsonData = JSON.stringify(data);//对象序列化为json字符串,
+        // python后台接到对象后反序列化为字典取出键facility即可取出列表
         $.ajax({
             url:"/api/house/info",
             type:"POST",

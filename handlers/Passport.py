@@ -80,6 +80,7 @@ class LoginHandler(BaseHandler):
                 session.data["user_id"] = res["up_user_id"]
                 session.data["mobile"] = mobile
                 session.data["name"] = res['up_name']
+                session.save()
             except Exception as e:
                 logging.error(e)
             return self.write(dict(errno=RET.OK, errmsg="OK"))
@@ -119,12 +120,28 @@ class AvatarHandler(BaseHandler):
     def post(self):
         from utils.qiniu_storage import storage
         try:
-            image_data = self.request.files["avatar"][0]["body"]
+            image_data = self.request.files["avatar"]
+            if not image_data:
+                return self.write(dict(errcode=RET.PARAMERR, errmsg="未上传图片"))
+
         except Exception as e:
             logging.error(e)
             return self.write("出错了")
         try:
-            key = storage(image_data)
+            avatar = image_data[0]["body"]
+            key = storage(avatar)
         except Exception as e:
-            return self.write("")
-        self.db.execute
+            return self.write(dict(errcode=RET.THIRDERR, errmsg="上传失败"))
+
+        # 从session中取出用户user_id 用来存储用户的图片信息导数据库
+        user_id = self.session.data['user_id']
+        # 保存图片的url
+        sql = "update ih_user_profile set up_avatar=%(avatar)s WHERE up_user_id =$(user_id)s "
+        try:
+            # execute返回新增id,execute_rouwcount 返回受影响的行数
+            row_count = self.db.execute_rowcount(sql, avatar=key, user_id=user_id)
+        except Exception as e:
+            logging.error(e)
+            return self.write(dict(errcode=RET.DBERR, errmsg="存储出错了!!"))
+        # 正确情况
+        self.write(dict(errcode=RET.OK, errmsg="ok!!"))

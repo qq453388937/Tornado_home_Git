@@ -35,7 +35,7 @@ class Session(object):
     """
 
     def __init__(self, request_handler):
-        self.request_handler = request_handler
+        self.request_handler = request_handler # 方便下面和别的方法时使用
         # 从cookie中获取sessionid 每个用户有自己的cookie
         self.session_id = self.request_handler.get_secure_cookie("session_id")
         if not self.session_id:
@@ -46,7 +46,7 @@ class Session(object):
         else:
             # 尝试着取sessionid 从redis
             try:
-                data = self.redis.get("sess_%s" % self.session_id)
+                data = self.request_handler.redis.get("sess_%s" % self.session_id)
             except Exception as e:
                 logging.error(e)
                 self.data = {}  # 用户没有登录,判定过期
